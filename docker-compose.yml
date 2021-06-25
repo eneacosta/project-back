@@ -1,0 +1,37 @@
+version: '3'
+services:
+ api:
+   build: .
+   labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.back.rule=Host(`${DOMAIN}`) && PathPrefix(`/api`)"
+    - "traefik.http.routers.back.entrypoints=web"
+    - "traefik.http.services.back.loadbalancer.server.port=8000"
+   environment:
+    - ROOT_PATH=/api
+
+ web:
+   image: nicoacosta97/coins-front:latest
+   labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.front.rule=Host(`${DOMAIN}`)"
+    - "traefik.http.routers.front.entrypoints=web"
+    - "traefik.http.services.front.loadbalancer.server.port=80"
+
+
+ traefik:
+  image: "traefik:latest"
+  command:
+    #dashboard
+    - "--api.insecure=true"
+    #docker
+    - "--providers.docker=true"
+    # http rutas
+    - "--providers.docker.exposedbydefault=false"
+    - "--entrypoints.web.address=:80"
+  labels:
+    - "traefik.docker.network=intnet"
+  ports:
+    - "80:80"
+  volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock:ro"
