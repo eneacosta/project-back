@@ -18,9 +18,9 @@ Tanbién se puede realizar el log in desde swagger para probar las apis, haciend
 ## Levantar servicios para desarrollo local con docker compose:
 Clonar repo: 
 ```bash
-$ cd project-back
-
 $ git clone https://github.com/eneacosta/project-back.git
+
+$ cd project-back
 ```
 Levantar servicios:
 ```bash
