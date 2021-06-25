@@ -16,7 +16,12 @@ La contraseña de todos los usuarios es `1234`
 Tanbién se puede realizar el log in desde swagger para probar las apis, haciendo click en Authorize.
 
 ## Levantar servicios para desarrollo local con docker compose:
+Clonar repo: 
+```bash
+$ cd project-back
 
+$ git clone https://github.com/eneacosta/project-back.git
+```
 Levantar servicios:
 ```bash
 $ sudo docker-compose up -f docker-compose.develpment.yml
@@ -28,11 +33,11 @@ El servicio deberia estar corriendo en el puerto 8000 de [localhost](http://loca
 
 Clonar repo: 
 ```bash
-$ git clone https://github.com/eneacosta/coins-back.git
+$ git clone https://github.com/eneacosta/project-back.git
 ```
 Setear entorno virtual: 
 ```bash
-$ cd coins-back
+$ cd project-back
 
 $ python venv env
 
